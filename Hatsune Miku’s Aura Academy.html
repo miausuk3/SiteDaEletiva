@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hatsune Miku’s Aura Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#04080f;--panel:#0b1a24;--cy:#39f5e0;--tq:#16c7c0;--tx:#eafffd;--mut:#9fc7c7;--bad:#ff4d79;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--i:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:radial-gradient(circle at 50% -10%,#0d3a40 0,var(--bg) 55%) fixed;color:var(--tx);font:400 16px/1.5 Rubik,system-ui,sans-serif;overflow-x:hidden}
+body.brain{animation:hue 4s linear infinite}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+body.shake main,body.shake header{animation:shake .5s}
+@keyframes shake{20%{transform:translateX(-9px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+h1,h2,.big{font-family:Bungee,Impact,'Arial Black',sans-serif;font-weight:400;margin:0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+section{padding:48px 0}
+h2{font-size:clamp(1.6rem,5vw,2.6rem);color:var(--cy);text-shadow:0 0 18px #16c7c088;margin-bottom:18px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:#04080fdd;backdrop-filter:blur(8px);border-bottom:1px solid #16c7c055}
+.top .wrap{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:8px 18px;flex-wrap:wrap}
+.pill{font-family:Bungee,sans-serif;color:var(--cy);font-size:.95rem}
+.btn{font:800 .95rem Rubik,sans-serif;letter-spacing:.04em;border:2px solid var(--cy);background:#0b2a30;color:var(--tx);padding:11px 16px;border-radius:12px;cursor:pointer;min-height:44px;transition:transform .15s,box-shadow .15s,background .15s}
+.btn:hover{box-shadow:0 0 18px var(--cy);transform:translateY(-2px)}
+.btn:active{transform:scale(.96)}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.btn.main{background:linear-gradient(90deg,var(--tq),var(--cy));color:#02201f;font-size:1.1rem;padding:15px 26px;animation:pulse 1.6s infinite}
+.btn.bad{border-color:var(--bad);background:#2a0d18}
+.btn.bad:hover{box-shadow:0 0 18px var(--bad)}
+.btn:disabled{opacity:.5;cursor:not-allowed;animation:none}
+@keyframes pulse{50%{box-shadow:0 0 28px var(--cy)}}
+.hero{text-align:center;padding-top:30px;position:relative}
+.hero h1{font-size:clamp(2rem,7.5vw,4.6rem);line-height:1.05;background:linear-gradient(90deg,#fff,var(--cy),#fff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px #39f5e099)}
+.hero p.sub{max-width:640px;margin:14px auto 0;color:var(--mut);font-size:1.1rem}
+.stage{position:relative;width:min(340px,80vw);margin:26px auto 0;aspect-ratio:5/6}
+.aura{position:absolute;inset:-18%;border-radius:50%;background:radial-gradient(circle,rgba(57,245,224,calc(.25 + var(--i)*.5)) 0,rgba(22,199,192,calc(.1 + var(--i)*.3)) 40%,transparent 70%);animation:breathe calc(3s - var(--i)*1.6s) ease-in-out infinite;filter:blur(calc(6px + var(--i)*10px))}
+.ring{position:absolute;inset:-6%;border-radius:50%;border:3px dashed var(--cy);opacity:calc(.15 + var(--i)*.7);animation:spin calc(12s - var(--i)*9s) linear infinite}
+@keyframes breathe{50%{transform:scale(calc(1.05 + var(--i)*.25))}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.miku{position:relative;width:100%;height:100%;filter:drop-shadow(0 0 calc(6px + var(--i)*22px) var(--cy));animation:enter 1.1s cubic-bezier(.2,1.4,.4,1) both,float 3.4s ease-in-out 1.1s infinite}
+.miku svg{width:100%;height:100%}
+@keyframes enter{from{transform:translateY(120%) scale(.4) rotate(-12deg);opacity:0}}
+@keyframes float{50%{transform:translateY(-10px)}}
+.miku.pop{animation:pop .6s}
+@keyframes pop{30%{transform:scale(1.15) rotate(-4deg)}60%{transform:scale(.95) rotate(3deg)}}
+.bubble{position:relative;background:#eafffd;color:#06201f;font-weight:600;border-radius:18px;padding:12px 16px;max-width:520px;margin:18px auto 0;box-shadow:0 0 22px #39f5e066;min-height:3.2em}
+.bubble::before{content:"";position:absolute;top:-12px;left:50%;margin-left:-10px;border:10px solid transparent;border-top:0;border-bottom-color:#eafffd}
+.counter{margin:24px auto 0;display:inline-block;background:#06141b;border:2px solid var(--cy);border-radius:18px;padding:10px 28px;box-shadow:0 0 26px #16c7c066}
+.counter small{display:block;color:var(--mut);letter-spacing:.2em;font-size:.75rem}
+.counter .big{font-size:clamp(2.6rem,10vw,4.4rem);color:var(--cy)}
+.counter.neg .big{color:var(--bad)}
+.cta{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:linear-gradient(160deg,var(--panel),#07121a);border:2px solid #16c7c066;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-4px) rotate(-.4deg);border-color:var(--cy)}
+.card.neg{border-color:#ff4d7966}
+.card.neg:hover{border-color:var(--bad)}
+.card .ic{font-size:2.6rem;line-height:1}
+.card h3{margin:0;font-size:1.15rem}
+.tag{align-self:flex-start;font-family:Bungee,sans-serif;font-size:.85rem;padding:3px 10px;border-radius:99px;background:#0c3a3a;color:var(--cy)}
+.neg .tag{background:#3a0f1d;color:#ff8fab}
+.card p{margin:0;color:var(--mut);flex:1}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.box{background:var(--panel);border:2px solid #16c7c066;border-radius:18px;padding:18px}
+.lvname{font-size:clamp(1.5rem,5vw,2.4rem);color:var(--cy)}
+.bar{height:14px;background:#06141b;border-radius:99px;overflow:hidden;margin:12px 0;border:1px solid #16c7c066}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--tq),#fff);transition:width .6s}
+ul.hist{list-style:none;margin:0;padding:0;max-height:300px;overflow:auto}
+ul.hist li{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #16c7c033;font-size:.92rem}
+.up{color:var(--cy);font-weight:800}.dn{color:var(--bad);font-weight:800}
+.mis{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #16c7c033}
+.mis.done span{text-decoration:line-through;color:var(--mut)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}
+@media(max-width:560px){.stats{grid-template-columns:1fr}}
+.stats .big{font-size:2rem;color:var(--cy)}
+.stats div:nth-child(2) .big{color:var(--bad)}
+.advice{display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:center}
+.advice .mini{width:150px;height:180px}
+.advice .mini svg{width:100%;height:100%}
+.ptc{position:fixed;width:10px;height:10px;border-radius:50%;pointer-events:none;z-index:60}
+#god{position:fixed;inset:0;z-index:70;display:none;place-items:center;text-align:center;background:radial-gradient(circle,#39f5e0cc,#000d 70%);animation:fl .3s 6}
+#god.on{display:grid}
+#god .big{font-size:clamp(3rem,16vw,9rem);color:#fff;text-shadow:0 0 40px var(--cy),0 0 90px var(--cy);animation:zoom 2.6s both}
+@keyframes zoom{from{transform:scale(.2) rotate(-10deg);opacity:0}30%{opacity:1}to{transform:scale(1.1)}}
+@keyframes fl{50%{filter:brightness(1.6)}}
+dialog{background:var(--panel);color:var(--tx);border:2px solid var(--bad);border-radius:18px;max-width:380px;padding:22px}
+dialog::backdrop{background:#000b}
+footer{text-align:center;color:var(--mut);padding:30px 18px 50px;font-size:.85rem}
+.lv3 .card:hover,.lv4 .card:hover,.lv5 .card:hover{box-shadow:0 0 22px #39f5e066}
+body.lv5 .hero h1{animation:glow 1s infinite alternate}
+@keyframes glow{to{filter:drop-shadow(0 0 30px #fff)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01s!important;animation-iteration-count:1!important;transition:none!important}}
+.map{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;max-width:680px;margin:0 auto;background:#06141b;border:2px solid var(--cy);border-radius:14px;padding:6px}
+.map:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.t{aspect-ratio:1;border-radius:6px;background:#0b2230;display:grid;place-items:center;font-size:clamp(14px,4.4vw,28px);line-height:1}
+.t.a{background:#0e3438}.t.b{background:#1a2a3a}.t.c{background:#2a1f3a}
+.t.p{background:#0c4a55;box-shadow:inset 0 0 12px var(--cy)}
+.t.p svg{width:96%;height:96%}
+.t.done{opacity:.35}
+.dp{display:grid;grid-template-columns:repeat(3,56px);gap:6px;justify-content:center;margin:12px auto}
+.dp .btn{padding:0;font-size:1.3rem}
+.role{font:.8rem Bungee,sans-serif;padding:2px 9px;border-radius:99px;background:#0c3a3a;color:var(--cy)}
+.role.bully{background:#3a0f1d;color:#ff8fab}.role.prof{background:#3a3210;color:#ffe27a}
+.ch{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.ch .btn{text-align:left}
+.rpg{max-width:780px;margin:0 auto}.rb{display:flex;align-items:center;gap:12px}.re{font-size:3rem;line-height:1}.rb h3{font-size:clamp(1.3rem,4vw,2rem);color:var(--cy)}
+.cl{display:flex;gap:6px;align-items:center;margin:8px 0;color:var(--mut)}.pk{padding:3px 10px;border:2px dashed #16c7c066;border-radius:10px}.pk.on{border:2px solid var(--cy);background:#0c3a3a}
+.rt{font-size:1.1rem;margin:12px 0}.pf{width:170px;margin:10px auto}.pf svg{width:100%}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+<span class="pill">AURA ACADEMY</span>
+<span class="pill" aria-live="polite">AURA: <span id="mini">0</span> · <span id="miniLv"></span></span>
+<span style="display:flex;gap:8px;flex-wrap:wrap">
+<button class="btn" id="brainBtn" aria-pressed="false">🧠 MODO BRAINROT: OFF</button>
+</span></div></div>
+
+<header class="hero"><div class="wrap">
+<h1>HATSUNE MIKU’S AURA ACADEMY</h1>
+<p class="sub">Aprenda a dominar a arte de farmar aura e se tornar o ser mais moggado da sala.</p>
+<div class="stage" id="stage"><div class="aura"></div><div class="ring"></div><div class="miku" id="mikuBig"></div></div>
+<div class="bubble" id="bub1" aria-live="polite">Bem-vindo, aluno. Aqui ninguém é NPC… ainda.</div>
+<div class="counter" id="counter"><small>SUA AURA</small><div class="big" id="aura">0</div></div>
+<div class="cta"><a href="#escola" style="text-decoration:none"><button class="btn main" id="start">COMEÇAR A FARMAR AURA</button></a></div>
+</div></header>
+
+<main>
+<section id="escola"><div class="wrap">
+<h2>A CAÇA À PROFESSORA HACHUNE</h2>
+<p style="color:var(--mut);margin-top:0">Aqui a aura só se farma andando pela escola. Cada escolha pode te render (ou custar) aura.</p>
+<div class="rpg box" id="rpg" aria-live="polite"></div>
+</div></section>
+
+<section><div class="wrap two">
+<div class="box"><h2>SEU NÍVEL DE MOGGAMENTO</h2>
+<div class="lvname big" id="lvName"></div>
+<div class="bar"><i id="lvBar"></i></div>
+<p id="lvDesc" style="color:var(--mut);margin:0"></p></div>
+<div class="box"><h2>HISTÓRICO</h2><ul class="hist" id="hist"></ul></div>
+</div></section>
+
+
+
+<section><div class="wrap">
+<h2>SALA DE CONSELHOS</h2>
+<div class="box advice">
+<div class="mini" id="mikuMini"></div>
+<div style="flex:1;min-width:230px"><div class="bubble" id="bub2" style="margin:0 0 14px">Clique no botão. A sabedoria é grátis, a aura não.</div>
+<button class="btn" id="adv">PEDIR CONSELHO À MIKU</button></div>
+</div></div></section>
+
+<section><div class="wrap">
+<h2>ESTATÍSTICAS</h2>
+<div class="box stats">
+<div><small>AURA GANHA</small><div class="big" id="sg">0</div></div>
+<div><small>AURA PERDIDA</small><div class="big" id="sl">0</div></div>
+<div><small>AÇÕES EXECUTADAS</small><div class="big" id="sn">0</div></div>
+</div>
+<div class="cta"><button class="btn bad" id="reset">RESETAR MINHA AURA</button></div>
+</div></section>
+</main>
+<footer>Aura Academy é paródia. Nenhuma aura real foi farmada ou perdida. Hatsune Miku desenhada à mão em SVG, com carinho e exagero.</footer>
+
+<div id="god" aria-hidden="true"><div class="big">AURA<br>GOD</div></div>
+<dialog id="dlg"><h3 style="margin-top:0">Tem certeza?</h3><p>Toda a sua aura, histórico e estatísticas vão virar poeira cósmica.</p>
+<div class="cta"><button class="btn" id="no">CANCELAR</button><button class="btn bad" id="yes">ZERAR TUDO</button></div></dialog>
+
+<script>
+const $=s=>document.querySelector(s),KEY='miku-aura-v1';
+const today=()=>new Date().toISOString().slice(0,10);
+let S=load();
+function load(){try{const j=JSON.parse(localStorage.getItem(KEY));if(j&&typeof j.aura==='number'){if(j.day!==today()){j.day=today();j.missions={}}return j}}catch(e){}return{aura:0,gained:0,lost:0,n:0,hist:[],missions:{},day:today(),brain:false,god:false}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const LV=[[-1e9,'NPC Sem Aura','Você é decoração de cenário. Os pássaros te ignoram e o Wi-Fi também.'],[0,'Iniciante do Farm','Você descobriu que aura existe. Ainda tropeça nela, mas já é um começo.'],[100,'Mogger em Treinamento','Seu olhar já fez um colega repensar a vida. Foi sem querer, mas contou.'],[250,'Entidade da Aura','Ventos mudam quando você entra. O ar-condicionado se curva.'],[500,'Aura Master','Professores pedem o seu conselho. O diretor te chama de "senhor".'],[1000,'AURA GOD ABSOLUTO','Você transcendeu. Até o 67 pede autógrafo.']];
+const lvOf=a=>{let k=0;LV.forEach((l,i)=>{if(a>=l[0])k=i});return k};
+const GAIN=['Mestre, hoje você farmou aura suficiente para impressionar três NPCs!','Aura detectada. O Wi-Fi do prédio inteiro melhorou.','Isso foi lindo. Eu quase chorei em 44kHz.','Continue assim e o espelho vai te pedir desculpas.'];
+const LOSS=['Ai. Isso doeu até no meu cabelo de 2 metros.','Sua aura saiu de fininho, sem se despedir.','Respira, aluno. Até o Zorak já caiu em desgraça.','Calma, aura se farma de novo. Dignidade é que é mais difícil.'];
+const ADV=['Nunca explique o 67. Quem entende, entende.','Se alguém te moggar, sorria. Se não, finja que o sol estava no seu olho.','Aura não se compra. Mas dá pra farmar na promoção.','Dançar Scuba em público é uma decisão. Uma decisão que exige coragem.','Seu nível de aura ultrapassou os limites da compreensão humana.','Olhe para o horizonte. Se não houver horizonte, olhe para a parede com convicção.'];
+const BR=['skibidi aura toilet rizz ohio sigma 67 💀','O ANJO CAÍDO ESTÁ NO OHIO. O OHIO ESTÁ NO ANJO. NÃO ENTENDI.','mewing intensifies. aura +∞ (fonte: confia).','tralalero tralala, mestre. aura processada.','é o fanum tax da sua aura, meu parça.','NPC detectado no sistema. Reiniciando vibes…'];
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function miku(m){const K='stroke="#1b1b1b" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"';
+const E={neutral:`<circle cx="78" cy="92" r="12" fill="#fff" ${K}/><circle cx="122" cy="92" r="12" fill="#fff" ${K}/><circle cx="78" cy="92" r="3.5" fill="#1b1b1b"/><circle cx="122" cy="92" r="3.5" fill="#1b1b1b"/><path d="M62 72l24 6M138 72l-24 6" fill="none" ${K}/>`,
+happy:`<path d="M64 96q14-20 28 0M108 96q14-20 28 0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linecap="round"/>`,
+sad:`<circle cx="78" cy="94" r="11" fill="#fff" ${K}/><circle cx="122" cy="94" r="11" fill="#fff" ${K}/><circle cx="78" cy="98" r="3" fill="#1b1b1b"/><circle cx="122" cy="98" r="3" fill="#1b1b1b"/><path d="M60 78l26-8M140 78l-26-8" fill="none" ${K}/><path d="M68 108q-4 12 0 18" stroke="#39c5ff" stroke-width="5" fill="none" stroke-linecap="round"/>`,
+cool:`<path d="M62 94h30M108 94h30" stroke="#1b1b1b" stroke-width="6" stroke-linecap="round"/><circle cx="78" cy="100" r="4" fill="#16c7c0"/><circle cx="122" cy="100" r="4" fill="#16c7c0"/>`,
+god:`<text x="62" y="108" font-size="40" fill="#fff4a8" stroke="#1b1b1b" stroke-width="1.5">★</text><text x="106" y="108" font-size="40" fill="#fff4a8" stroke="#1b1b1b" stroke-width="1.5">★</text>`}[m]||'';
+const M={neutral:`<rect x="90" y="112" width="20" height="16" fill="#e5b3ff" ${K}/>`,happy:`<path d="M86 112q14 22 28 0z" fill="#e5b3ff" ${K}/>`,sad:`<path d="M88 128q12-14 24 0" fill="none" ${K}/>`,cool:`<path d="M90 122h20" fill="none" ${K}/>`,god:`<rect x="86" y="110" width="28" height="20" fill="#e5b3ff" ${K}/>`}[m]||'';
+const sp=x=>`<circle cx="${x}" cy="110" r="9" fill="#f6c9a8" opacity=".8"/><path d="M${x} 110m-6 0a6 6 0 1 1 6 6a3 3 0 1 1-3-3" fill="none" stroke="#d9a8ff" stroke-width="2.5"/>`;
+return`<svg viewBox="0 0 200 240" role="img" aria-label="Professora Hachune Miku, expressão ${m}"><path d="M66 38C16 46 4 130 20 234c22-30 30-100 52-140z" fill="#3f9aa2" ${K}/><path d="M134 38c50 8 62 92 46 196-22-30-30-100-52-140z" fill="#3f9aa2" ${K}/><path d="M96 158L52 130" stroke="#2a2a2a" stroke-width="16" stroke-linecap="round"/><path d="M52 130L16 84" stroke="#e8e6b0" stroke-width="8" stroke-linecap="round"/><path d="M18 88L0 56l20 14-8-24 18 30z" fill="#5fae4d" ${K}/><path d="M122 156l12 38" stroke="#2a2a2a" stroke-width="16" stroke-linecap="round"/><rect x="82" y="202" width="14" height="30" rx="6" fill="#2a2a2a" ${K}/><rect x="104" y="202" width="14" height="30" rx="6" fill="#2a2a2a" ${K}/><path d="M72 188h56l8 16H64z" fill="#2a2a2a" ${K}/><path d="M64 204h72" stroke="#3fb8b0" stroke-width="4"/><path d="M82 148h36l6 40H76z" fill="#8f9aa3" ${K}/><path d="M100 150l-6 6 3 26h6l3-26z" fill="#3fb8b0" ${K}/><ellipse cx="100" cy="95" rx="60" ry="52" fill="#fde6cc" ${K}/>${sp(60)}${sp(140)}${E}${M}<path d="M42 96C34 26 166 26 158 96c-6-26-14-36-26-42l-8 24-14-36-14 36-8-24c-12 6-22 16-26 42z" fill="#4aa6ad" ${K}/><path d="M56 40l-8-14 12-4 6 12zM144 40l8-14-12-4-6 12z" fill="#a2347f" ${K}/></svg>`}
+let mood='neutral';
+function setMood(m,t){mood=m;paint();const e=$('#mikuBig');e.classList.remove('pop');void e.offsetWidth;e.classList.add('pop');clearTimeout(setMood.t);setMood.t=setTimeout(()=>{mood=lvMood();paint()},t||2200)}
+const lvMood=()=>{const l=lvOf(S.aura);return S.aura<0?'sad':l>=5?'god':l>=3?'cool':l>=1?'happy':'neutral'};
+function paint(){$('#mikuBig').innerHTML=miku(mood);$('#mikuMini').innerHTML=miku(mood==='neutral'?'happy':mood)}
+function say(t){$('#bub1').textContent=t;$('#bub2').textContent=t}
+function burst(x,y,good,n=26){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<n;i++){const p=document.createElement('i');p.className='ptc';p.style.left=x+'px';p.style.top=y+'px';p.style.background=good?pick(['#39f5e0','#fff','#16c7c0','#9ffff4']):pick(['#2a0d18','#ff4d79','#444']);p.style.boxShadow=good?'0 0 10px #39f5e0':'none';document.body.appendChild(p);const a=Math.random()*6.28,d=60+Math.random()*140;p.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:`translate(${Math.cos(a)*d}px,${good?Math.sin(a)*d-60:Math.sin(a)*d+90}px) scale(0)`,opacity:0}],{duration:800+Math.random()*500,easing:'ease-out'}).onfinish=()=>p.remove()}}
+function act(a,ev){const g=a.pts>0,r=ev&&ev.target?ev.target.getBoundingClientRect():$('#aura').getBoundingClientRect();
+S.aura+=a.pts;S.n++;g?S.gained+=a.pts:S.lost-=a.pts;S.hist.unshift({n:a.name,d:a.pts,t:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})});S.hist=S.hist.slice(0,30);
+burst(r.left+r.width/2,r.top+r.height/2,g,g?34:20);
+if(!g){document.body.classList.add('shake');setTimeout(()=>document.body.classList.remove('shake'),520)}
+setMood(g?'happy':'sad');
+say(S.brain?pick(BR):(Math.random()<.6?a.say:pick(g?GAIN:LOSS)));
+if(S.aura>=1000&&!S.god){S.god=true;godFx()}else if(S.aura<1000)S.god=false;
+render();save()}
+function godFx(){const e=$('#god');e.classList.add('on');setMood('god',3000);say('Seu nível de aura ultrapassou os limites da compreensão humana.');setTimeout(()=>e.classList.remove('on'),2700)}
+let shown=0;
+function render(){const a=S.aura,l=lvOf(a);
+const c=$('#aura'),from=shown,t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/500);shown=Math.round(from+(a-from)*k);c.textContent=shown;$('#mini').textContent=shown;if(k<1)requestAnimationFrame(f)})(t0);
+$('#counter').classList.toggle('neg',a<0);
+document.body.className=(S.brain?'brain ':'')+'lv'+l;document.body.style.setProperty('--i',l/5);
+$('#miniLv').textContent=LV[l][1];$('#lvName').textContent=LV[l][1];$('#lvDesc').textContent=LV[l][2]+(S.brain?' (modo brainrot: sigma).':'');
+const lo=Math.max(LV[l][0],l===0?-100:0),hi=LV[l+1]?LV[l+1][0]:lo+1;$('#lvBar').style.width=(LV[l+1]?Math.max(2,Math.min(100,(a-lo)/(hi-lo)*100)):100)+'%';
+$('#hist').innerHTML=S.hist.length?S.hist.map(h=>`<li><span>${h.t} · ${h.n}</span><span class="${h.d>0?'up':'dn'}">${h.d>0?'+':'−'}${Math.abs(h.d)}</span></li>`).join(''):'<li style="color:var(--mut)">Nenhuma ação ainda. A aura está esperando.</li>';
+$('#sg').textContent=S.gained;$('#sl').textContent=S.lost;$('#sn').textContent=S.n;
+$('#brainBtn').textContent='🧠 MODO BRAINROT: '+(S.brain?'ON':'OFF');$('#brainBtn').setAttribute('aria-pressed',S.brain)}
+$('#adv').onclick=e=>{const r=e.target.getBoundingClientRect();say(S.brain?pick(BR):pick(ADV));setMood('cool');burst(r.left+r.width/2,r.top,true,14)};
+$('#brainBtn').onclick=()=>{S.brain=!S.brain;say(S.brain?'MODO BRAINROT ATIVADO. skibidi? sigma? ohio? 67?':'Voltei ao normal. Saudades da sanidade?');setMood(S.brain?'god':'neutral',2000);render();save()};
+$('#reset').onclick=()=>$('#dlg').showModal();
+$('#no').onclick=()=>$('#dlg').close();
+$('#yes').onclick=()=>{S={aura:0,gained:0,lost:0,n:0,hist:[],missions:{},day:today(),brain:false,god:false};shown=0;$('#dlg').close();setMood('neutral');say('Tudo zerado. Renascimento de NPC iniciado.');render();save();G.sensed=false;hall('Aura zerada. A caça recomeça do zero.')};
+const NEED=250,G={sensed:false,q:['banheiro','sala','patio','cantina','biblioteca','salaprof']};
+const LOC={
+banheiro:['🚽','Banheiro','O banheiro está estranhamente silencioso. Há pegadas de glitter ciano até a última cabine.',[['Investigar a última cabine',25,'Dentro da cabine, um bilhete: "Fui farmar aura onde só quem sobe alcança." Estranho, mas útil.',1],['Encarar o espelho com olhar de anjo caído',50,'O espelho piscou primeiro. O secador de mãos aplaudiu.'],['Cantar no eco do banheiro',-35,'O eco devolveu tudo, inclusive a vergonha.']]],
+sala:['📖','Sala de Aula','A sala está vazia, exceto por um quadro cheio de alhos-porós desenhados em giz.',[['Ler o quadro com atenção',30,'Atrás do quadro, uma seta de giz aponta para cima. A professora gosta de altura.',1],['Dançar Scuba em cima da mesa',100,'Scuba perfeito. As cadeiras se levantaram em respeito.'],['Sentar na cadeira da professora',-50,'A cadeira rangeu tão alto que parecia xingamento.']]],
+patio:['⛲','Pátio','No pátio, Chad Ohio te bloqueia: "Figurante, passa a aura."',[['Moggar',-30,'Você tentou moggar o Chad, mas sua aura não aguentou. Ele nem piscou.',0,{min:100,lab:'precisa de 100 de aura',d:75,r:'Chad perdeu a mandíbula e você ganhou aura.'}],['Correr atrás de um bilhete que voou',20,'No bilhete: "Só quem tem aura suficiente sente a professora." Chad ficou confuso.',1],['Aceitar o moggamento',-75,'Você virou figurante. A Miku suspirou do outro lado da escola.']]],
+cantina:['🥪','Cantina','O Tio da Cantina limpa o balcão: "A professora comprou 40 alhos-porós ontem. Quarenta!"',[['Pedir um pastel de alho-poró',30,'Dentro do pastel, um papel: "Procure o lugar mais alto da escola."',1],['Fazer o 67 no balcão',67,'O tio disse: "Isso eu entendo." Respeito.'],['Pedir fiado',-40,'O tio anotou na caderneta da vergonha.',0,{min:151,lab:'precisa de mais de 150 de aura',d:15,r:'Com tanta aura, o tio nem abriu a caderneta da vergonha. Pastel entregue normalmente.'}]]],
+biblioteca:['📚','Biblioteca','A Lia aponta para uma estante: "Manual do Alho-Poró, volume 3."',[['Abrir o Manual do Alho-Poró',35,'Na última página, um mapa: um X desenhado no telhado.',1],['Mewing silencioso entre as estantes',35,'Ninguém viu, mas a aura sentiu.'],['GRITAR 67',-45,'Expulso da biblioteca por 67 minutos.']]],
+salaprof:['🍵','Sala dos Professores','O Diretor Gakupo toma chá: "Procurando alguém de cabelo longo e olhar de susto?"',[['Devolver o olhar de anjo caído',70,'O diretor desviou o olhar e sussurrou: "Telhado."',1],['Ajudar a servir o chá',45,'O diretor assinou um bilhete de aprovação.'],['Pedir 42 de nota',-42,'O 42 voltou para te assombrar.']]]};
+const sg=d=>`<b class="${d>0?'up':'dn'}">${d>0?'+':'−'}${Math.abs(d)} aura</b>`;
+function view(e,t,body,opts){const v=Math.max(0,Math.min(S.aura,NEED));
+$('#rpg').innerHTML=`<div class="rb"><span class="re" aria-hidden="true">${e}</span><h3 class="big">${t}</h3></div><div class="cl"><small>SENSOR DE AURA</small><div class="bar" style="flex:1;margin:0"><i style="width:${v/NEED*100}%"></i></div><small>${v}/${NEED}</small></div><div class="rt">${body}</div><div class="ch">${opts.map((o,i)=>`<button class="btn" data-i="${i}">${i+1}. ${o[0]}</button>`).join('')}</div>`;
+$('#rpg').onclick=ev=>{const b=ev.target.closest('button[data-i]');if(b)opts[b.dataset.i][1](b)}}
+function hall(msg){const hot=S.aura>=NEED;let m=msg;
+if(hot&&!G.sensed){G.sensed=true;m='✨ <b>Você sente uma aura diferente nessa direção…</b> Algo poderoso espera por você.'}else if(!hot)G.sensed=false;
+const o=G.q.slice(0,hot?2:3).map(k=>[`${LOC[k][0]} Ir para ${LOC[k][1]}`,()=>loc(k)]);
+if(hot)o.splice(Math.floor(Math.random()*3),0,['🌤️ Ir para o telhado (você sente uma estranha aura vindo de lá)',roof]);
+view('🏫','Corredor da Escola',m||(hot?'A aura diferente continua pulsando. Você pode segui-la, ou continuar farmando por aí.':`O sinal tocou. Em algum lugar desta escola está a <b>Profa. Hachune Miku</b>, mas só quem tem bastante aura consegue senti-la. Alcance <b>${NEED} de aura</b> e algo vai mudar. Para onde você vai?`),o)}
+function loc(k){const[e,n,t,c]=LOC[k];view(e,n,t,[...c].sort(()=>Math.random()-.5).map(ch=>{const g=ch[4],lb=ch[0];return[lb,b=>{const ok=g&&S.aura>=g.min,d=ok?g.d:ch[1],r=ok?g.r:ch[2];G.q=G.q.filter(x=>x!==k).concat(k);act({name:n+': '+ch[0],pts:d,say:r},{target:b});
+view(e,n,r+' '+sg(d),[['↩ VOLTAR AO CORREDOR',()=>hall()]])}]}))}
+function roof(){view('🌤️','O Telhado',`Entre a antena e uma pilha de alhos-porós, ela está lá: a <b>Profa. Hachune Miku</b>!<div class="pf">${miku('neutral')}</div>"Você me encontrou, aluno! Mas ninguém passa na minha aula sem mostrar aura. Escolha com sabedoria."`,[['Entregar um alho-poró com dignidade e olhar de anjo caído',()=>end(300,'FINAL LENDÁRIO','Hachune chorou espirais cor-de-rosa. Você foi nomeado Monitor Supremo da Aura.','god')],['Fazer o 6767 bem na frente dela',()=>end(150,'FINAL ESTRANHAMENTE BOM','Ela piscou, aprovou e disse: "Ninguém entendeu, mas eu respeito."','happy')],['Perguntar se vai ter prova',()=>end(-100,'FINAL DO NPC','Hachune: "TEM." Você achou a professora e perdeu a dignidade.','sad')]])}
+function end(d,t,s,m){act({name:'Final: '+t,pts:d,say:s},{target:$('#rpg')});setMood(m,4000);view('🏆',t,s+' '+sg(d),[['🔁 JOGAR DE NOVO',()=>{hall()}]])}
+hall();
+mood=lvMood();paint();shown=S.aura;render();
+</script>
+</body>
+</html>
